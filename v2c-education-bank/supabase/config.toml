@@ -1,0 +1,32 @@
+# Supabase CLI config (used by `supabase start` / `supabase db push`)
+project_id = "v2c-education-bank"
+
+[api]
+schemas = ["public"]
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173/dashboard"]
+enable_signup = true
+
+[auth.email]
+enable_confirmations = true
+
+[auth.email.template.confirmation]
+subject = "Confirm your V2C Education Bank account / உங்கள் கணக்கை உறுதிப்படுத்துங்கள்"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Reset your password / கடவுச்சொல்லை மீட்டமைக்கவும்"
+content_path = "./supabase/templates/recovery.html"
+
+[auth.external.google]
+enabled = true
+client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+
+[functions.mcp]
+verify_jwt = true
+
+[storage]
+file_size_limit = "10MiB"

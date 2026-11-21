@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans Tamil", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Noto Sans Tamil", Georgia, serif;
+  --font-tamil: "Noto Sans Tamil", "Inter", sans-serif;
+
+  --color-background: #fbf8f1;
+  --color-surface: #ffffff;
+  --color-foreground: #1c2a22;
+  --color-muted: #f2eee3;
+  --color-muted-foreground: #5d6b62;
+  --color-border: #e5dfcf;
+  --color-ring: #15803d;
+
+  --color-primary: #15803d;
+  --color-primary-hover: #166534;
+  --color-primary-foreground: #ffffff;
+  --color-primary-soft: #e8f4ec;
+
+  --color-gold: #d97706;
+  --color-gold-soft: #fef3c7;
+  --color-gold-foreground: #78350f;
+
+  --color-sun: #dc2626;
+  --color-destructive: #b91c1c;
+  --color-destructive-soft: #fde8e8;
+
+  --radius-lg: 0.875rem;
+  --radius-md: 0.625rem;
+
+  --animate-ticker: ticker 45s linear infinite;
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  html[lang="ta"] body { @apply font-tamil; line-height: 1.65; }
+  html[lang="ta"] h1, html[lang="ta"] h2, html[lang="ta"] h3 { @apply font-tamil; letter-spacing: 0; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker { animation: none; }
+}
